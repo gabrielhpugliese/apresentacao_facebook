@@ -96,12 +96,12 @@ URL: http://code.google.com/p/html5slides/
 			<article>
 				<h3> Facebook </h3>
 				<img style="float: right; height: 35%; "  src="images/facebook.png" />
-				<ul >
+				<ul>
 					<li>
 						Maior rede social do mundo com 955M MAU (usuários ativos mensais) e 552M DAU (usuários ativos diários) no Q2 de 2012.
 					</li>
 					<li>
-						Nesta mesma data, 543M de usuários ativos mensais <i>mobile</i>.
+					    Nesta mesma data, 543M de usuários ativos mensais <i>mobile</i>.
 					</li>
 					<li>
 					    Zynga, produtora de jogos sociais dentro da plataforma, possui 167M MAU (~17% do total de MAU do Facebook).
@@ -114,52 +114,60 @@ URL: http://code.google.com/p/html5slides/
 					</li>
 				</ul>
 			</article>
+			<article>
+				<h3>News Feed</h3>
+				<br /><img style="border: 1px solid; height: 90%;" class="centered" src="images/news_feed.png" />
+			</article>
 
 			<article>
-				<h1>Twitter REST API (v1.1)</h1>
+				<h1>Facebook Open Graph</h1>
 				<p>
-					<a href="https://dev.twitter.com/">dev.twitter.com</a>
+					<a href="http://ogp.me/">opg.me</a>
 				</p>
 			</article>
 
 			<article>
-				<h3> Anatomia de uma requisição HTTP para a API </h3>
+				<h3>O que é Open Graph Protocol ?</h3>
 				<p>
-					Como tweetar "Hello World!" com OAuth1.0a
+					<i>"The Open Graph protocol enables any web page to become a rich object in a social graph. For instance, this is used on Facebook to allow any web page to have the same functionality as any other object on Facebook."</i>
 				</p>
+				<p>
+					Meta tags básicas:
+				</p>
+				<ul>
+					<li>
+						og:title - Título da página
+					</li>	
+					<li>
+						og:description - A descrição da página
+					</li>	
+					<li>
+						og:image - A imagem que caracteriza seu site
+					</li>	
+					<li>
+						og:url - O link da página
+					</li>	
+				</ul>
+			</article>
+
+			<article>
+				<h3>Testando as meta tags</h3>
 				<pre>
-POST /1/statuses/update.json?include_entities=true HTTP/1.1
-Accept: *
-Connection: close
-User-Agent: OAuth gem v0.4.4
-Content-Type: application/x-www-form-urlencoded
-Authorization: 
-        OAuth oauth_consumer_key="xvz1evFS4wEEPTGEFPHBog", 
-              oauth_nonce="kYjzVBB8Y0ZFabxSWbWovY3uYSQ2pTgmZeNu2VS4cg", 
-              oauth_signature="tnnArxj06cWHq44gCs1OSKk%2FjLY%3D", 
-              oauth_signature_method="HMAC-SHA1", 
-              oauth_timestamp="1318622958", 
-              oauth_token="370773112-GmHxMAgYyLbNEtIKZeRNFsMKPR9EyMZeS9weJAEb", 
-              oauth_version="1.0"
-Content-Length: 76
-Host: api.twitter.com
-
-status=Hello%20World%21
+head>
+meta property="og:url" content="http://socialattend.com/" />
+meta property="og:title" content="Social Attend" />
+meta property="og:description" content="Procure eventos da sua área 
+de atuação e conecte-se com pessoas em comum 
+através das redes sociais!" />
+/head>
 				</pre>
+				<img style="border: 1px solid;" class="centered" src="images/opg_tags.png" />
 			</article>
 
 			<article>
-				<h3> O que é e como funciona o OAuth </h3>
+				<h3>Built-in types</h3>
 				<p>
-					<i>"An open protocol to allow secure authorization in a simple and standard method from web, mobile and desktop applications."</i>
-				</p>
-				<img style="border: 1px solid;" class="centered" src="images/chart.png" />
-			</article>
-
-			<article>
-				<h3> Obtendo as tokens </h3>
-				<p>
-					Após criar uma aplicação em <a href="https://dev.twitter.com/apps/">dev.twitter.com/apps/</a>:
+					É possivel criar objetos dentro do "grafo social" onde 
 				</p>
 				<img class="centered" src="images/token.png" style="height: 88%;"/>
 
