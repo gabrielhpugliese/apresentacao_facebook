@@ -14,7 +14,7 @@ URL: http://code.google.com/p/html5slides/
 
 <html>
 	<head>
-		<title>Obtenção de dados do Twitter</title>
+		<title>Obtenção de dados do Facebook</title>
 
 		<meta charset='utf-8'>
 		<script src='slides.js'></script>
@@ -49,15 +49,6 @@ URL: http://code.google.com/p/html5slides/
 
 		</style>
 		<script type="text/javascript">
-			function get_five_imeusp(){
-				var url = "http://search.twitter.com/search.json?q=ime-usp&rpp=3&callback=?";
-				jQuery.getJSON(url, function(data){   
-				    //loop the tweets
-					jQuery(data.results).each(function(i,v){
-				    	$('#imeusp').append('<p style="font-size: 20px;">@' + v.from_user + ': ' + v.text) + '</p>';
-				    });
-				});
-			}
 			function print() {
 			    jQuery("body").css("background", "none");
 			    jQuery("article").removeClass("far-past");
@@ -80,8 +71,8 @@ URL: http://code.google.com/p/html5slides/
 		<section class='slides layout-regular template-default'>
 			<article>
 				<h1> Obtenção de dados do Facebook
-				<br>
 				</h1>
+				<br>
 				<p>
 					Gabriel Pugliese - @gabrielsapo
 					<br>
@@ -120,14 +111,14 @@ URL: http://code.google.com/p/html5slides/
 			</article>
 
 			<article>
-				<h1>Facebook Open Graph</h1>
+				<h1>Open Graph</h1>
 				<p>
 					<a href="http://ogp.me/">opg.me</a>
 				</p>
 			</article>
 
 			<article>
-				<h3>O que é Open Graph Protocol ?</h3>
+				<h3>O que é Open Graph Protocol</h3>
 				<p>
 					<i>"The Open Graph protocol enables any web page to become a rich object in a social graph. For instance, this is used on Facebook to allow any web page to have the same functionality as any other object on Facebook."</i>
 				</p>
@@ -153,13 +144,11 @@ URL: http://code.google.com/p/html5slides/
 			<article>
 				<h3>Testando as meta tags</h3>
 				<pre>
-head>
-meta property="og:url" content="http://socialattend.com/" />
-meta property="og:title" content="Social Attend" />
+meta property="og:url" content="http://socialattend.com/"
+meta property="og:title" content="Social Attend"
 meta property="og:description" content="Procure eventos da sua área 
 de atuação e conecte-se com pessoas em comum 
-através das redes sociais!" />
-/head>
+através das redes sociais!"
 				</pre>
 				<img style="border: 1px solid;" class="centered" src="images/opg_tags.png" />
 			</article>
@@ -167,144 +156,47 @@ através das redes sociais!" />
 			<article>
 				<h3>Built-in types</h3>
 				<p>
-					É possivel criar objetos dentro do "grafo social" onde 
+					É possivel tornar uma página qualquer em um objeto comum dentro do "grafo social" utilizando a propriedade og:type. Exemplo:
 				</p>
-				<img class="centered" src="images/token.png" style="height: 88%;"/>
-
-			</article>
-
-			<article>
-				<h3> Botão de autorização do usuário </h3>
-				<br>
-				<img class='centered' style="border: 1px solid;" src="images/authapp.jpg" />
-				<p>
-					Na maioria das vezes, quanto mais autorizações requeridas de um usuário, maior a probabilidade de rejeição do aplicativo pelo usuário.
-				</p>
-			</article>
-
-			<article>
-				<h3> Onde mudar as permissões </h3>
-				<p>
-					Na aba <i>settings</i> da sua aplicação:
-				</p>
-				<br>
-				<img class="centered" style="border: 1px solid;" src="images/type.png" />
-			</article>
-
-			<article>
-				<h3> Algumas limitações atuais </h3>
-				<ul>
-					<li>
-						150 requisições não-autenticadas por hora.
-					</li>
-					<li>
-						350 requisições autenticadas por hora.
-					</li>
-					<li>
-						Tweets antigos até 1.5 semana (mas dinâmico).
-					</li>
-					<li>
-						100 amigos por requisição.
-					</li>
-					<li>
-						E outros ver na própria documentação.
-					</li>
-				</ul>
-			</article>
-
-			<article>
-				<h3> A partir de março de 2013 </h3>
-				<ul>
-					<li>
-						Toda a requisição deverá ser autenticada.
-					</li>
-					<li>
-						Limitação de 60 requisições por hora por instância.
-					</li>
-					<li>
-						Padrões visuais e léxicos obrigatórios aos desenvolvedores.
-					</li>
-					<li>
-						Aplicativos em plataformas móveis precisarão ser autorizados.
-					</li>
-					<li>
-						Se desenvolvedores precisarem de uma grande escala de <i>tokens</i> individuais, precisará entrar em contato.
-					</li>
-				</ul>
-			</article>
-
-			<article>
-				<h3> Quadrantes dos desenvolvedores do Twitter </h3>
-				<img class="centered" src="images/dev_chart.png" />
-			</article>
-
-			<article>
-				<h3> Planos futuros para desenvolvedores </h3>
-				<ul>
-					<li>
-						Tweets em tempo real nas páginas web.
-					</li>
-					<li>
-						Maior integração com o Twitter Cards:
-					</li>
-					<img class="centered" src="images/cards.png" />
-				</ul>
-			</article>
-
-			<article>
-				<h1> Explorando a API pelo dev console </h1>
-				<p>
-					<a href="https://dev.twitter.com/console">dev.twitter.com/console</a>
-				</p>
-			</article>
-			
-			<article id="imeusp">
-				<h3>Buscar 3 últimos tweets sobre ime-usp</h3>
 				<pre>
-var //
-url = "//search.twitter.com/search.json?q=ime-usp&rpp=3&callback=?";
-jQuery.getJSON(url, function(data)
-{   
-    //loop the tweets
-    jQuery(data.results).each(function(i,v)
-    {
-        alert('@' + v.from_user + ': ' + v.text);
-    });
-});
+meta property="og:type" content="video.movie"
 				</pre>
-				<button id="5tweets" onClick="get_five_imeusp();">Rodar</button>
+
 			</article>
 
 			<article>
-				<h1> Trabalhando com Twitter4j </h1>
+				<h1>Pages</h1>
 				<p>
-					<a href="http://twitter4j.org">twitter4j.org</a>
+					<a href="http://ogp.me/">opg.me</a>
 				</p>
 			</article>
 
 			<article>
-				<h3> Cross-reference Twitter4j x Twitter API dev console </h3>
+				<h1>Apps</h1>
 				<p>
-					Para facilitar o paralelo entre os métodos da API do Twitter4j e o dev console:
-				</p>
-				<p>
-					<a href="http://twitter4j.org/en/api-support.html">twitter4j.org/en/api-support.html</a>
+					<a href="http://ogp.me/">opg.me</a>
 				</p>
 			</article>
 
 			<article>
-				<h3>Exemplo do Twitter4j</h3>
-				<pre>
-// The factory instance is re-useable and thread safe.
-Twitter twitter = new TwitterFactory().getInstance();
-List<Status> statuses = twitter.getFriendsTimeline();
-System.out.println("Showing friends timeline.");
-for (Status status : statuses) {
-System.out.println(status.getUser().getName() + ":" +
-		   status.getText());
-}
-				</pre>
+				<h1>Graph API</h1>
+				<p>
+					<a href="http://ogp.me/">opg.me</a>
+				</p>
 			</article>
+
+			<article>
+				<h3>Consultas por path</h3>
+			</article>
+
+			<article>
+				<h3>Consultas pelos objetos</h3>
+			</article>
+
+			<article>
+				<h3>FQLs</h3>
+			</article>
+
 
 			<article>
 				<h2>Obrigado</h2>
