@@ -13,42 +13,42 @@ URL: http://code.google.com/p/html5slides/
 -->
 
 <html>
-	<head>
-		<title>Obtenção de dados do Facebook</title>
+    <head>
+        <title>Obtenção de dados do Facebook</title>
 
-		<meta charset='utf-8'>
-		<script src='slides.js'></script>
-		<script src="jquery-1.8.0.min.js"></script>
-		<style>
-			@font-face {
-				font-family: 'Open Sans';
-				font-style: normal;
-				font-weight: 400;
-				src: local('Open Sans'), local('OpenSans'), url('1.woff') format('woff');
-			}
-			button {
-				background: #1e5799;
-				background: -moz-linear-gradient(top,  #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
-				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#7db9e8));
-				background: -webkit-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
-				background: -o-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
-				background: -ms-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
-				background: linear-gradient(to bottom,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
-				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 );
-				-webkit-border-radius: 5px;
-				-moz-border-radius: 5px;
-				border-radius: 5px;
-				color: white;
-				height: 50px;
-				width: 100px;
-				font-family: 'Open Sans', Arial, sans-serif;
-				font-weight: 600;
-				font-size: 15px;
-				float: right;
-			}
+        <meta charset='utf-8'>
+        <script src='slides.js'></script>
+        <script src="jquery-1.8.0.min.js"></script>
+        <style>
+            @font-face {
+                font-family: 'Open Sans';
+                font-style: normal;
+                font-weight: 400;
+                src: local('Open Sans'), local('OpenSans'), url('1.woff') format('woff');
+            }
+            button {
+                background: #1e5799;
+                background: -moz-linear-gradient(top,  #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#7db9e8));
+                background: -webkit-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+                background: -o-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+                background: -ms-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+                background: linear-gradient(to bottom,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 );
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                color: white;
+                height: 50px;
+                width: 100px;
+                font-family: 'Open Sans', Arial, sans-serif;
+                font-weight: 600;
+                font-size: 15px;
+                float: right;
+            }
 
-		</style>
-		<script type="text/javascript">
+        </style>
+        <script type="text/javascript">
             function print() {
                 jQuery("body").css("background", "none");
                 jQuery("article").removeClass("far-past");
@@ -63,233 +63,357 @@ URL: http://code.google.com/p/html5slides/
                 jQuery("article").css("margin", "0 0 9em 0");
                 jQuery("article").css("position", "relative");
             }
-            function get_gabrielsapo_info() {
-            	var url = "https://graph.facebook.com/gabrielsapo";
-            	jQuery.getJSON(url, function(data){
-            		for (var i in data)
-            			jQuery('#get-info').append('<li>' + i + ': ' + data[i] + '</li>');
-            	});
+
+            function get_info(div, obj) {
+                var url = "https://graph.facebook.com/" + obj;
+                jQuery.getJSON(url, function(data) {
+                    for (var i in data)
+                    jQuery(div).append('<li>' + i + ': ' + data[i] + '</li>');
+                });
             }
-            function get_object_info() {
-            	var url = "https://graph.facebook.com/http://socialattend.com/";
-            	jQuery.getJSON(url, function(data){
-            		for(var i in data)
-            			jQuery('#get-object').append('<li>' + i + ': ' + data[i] + '</li>')
-            	});
-            }
-		</script>
-	</head>
+        </script>
+    </head>
 
-	<body style='display: none'>
+    <body style='display: none'>
 
-		<section class='slides layout-regular template-default'>
-			<article>
-				<h1> Obtenção de dados do Facebook </h1>
-				<br>
-				<p>
-					Gabriel Pugliese - @gabrielsapo
-					<br>
-					nUSP: 5639061
-					<br>
-					Paulo Cheadi Haddad Filho - @paulochf
-					<br>
-					nUSP: 5210744
-				</p>
-			</article>
+        <section class='slides layout-regular template-default'>
+            <article>
+                <h1> Obtenção de dados do Facebook </h1>
+                <br>
+                <p>
+                    Gabriel Pugliese - @gabrielsapo
+                    <br>
+                    nUSP: 5639061
+                    <br>
+                    Paulo Cheadi Haddad Filho - @paulochf
+                    <br>
+                    nUSP: 5210744
+                </p>
+            </article>
 
-			<article>
-				<h3> Facebook </h3>
-				<img style="float: right; height: 35%; "  src="images/facebook.png" />
-				<ul>
-					<li>
-						Maior rede social do mundo com 955M MAU (usuários ativos mensais) e 552M DAU (usuários ativos diários) no Q2 de 2012.
-					</li>
-					<li>
-						Nesta mesma data, 543M de usuários ativos mensais <i>mobile</i>.
-					</li>
-					<li>
-						Zynga, produtora de jogos sociais dentro da plataforma, possui 167M MAU (~17% do total de MAU do Facebook).
-					</li>
-					<li>
-						Possui diversos produtos como os <i>Apps</i>, <i>Pages</i>, <i>Ads</i>, porém o principal é o <i>News Feed</i>, onde é possível incluir outros produtos.
-					</li>
-					<li>
-						Estados Unidos, Brasil e Índia, nesta ordem, são os 3 maiores países em número de usuários da rede social.
-					</li>
-				</ul>
-			</article>
-			<article>
-				<h3>News Feed</h3>
-				<br />
-				<img style="border: 1px solid; height: 90%;" class="centered" src="images/news_feed.png" />
-			</article>
+            <article>
+                <h3> Facebook </h3>
+                <img style="float: right; height: 35%; "  src="images/facebook.png" />
+                <ul>
+                    <li>
+                        Maior rede social do mundo com 955M MAU (usuários ativos mensais) e 552M DAU (usuários ativos diários) no Q2 de 2012.
+                    </li>
+                    <li>
+                        Nesta mesma data, 543M de usuários ativos mensais <i>mobile</i>.
+                    </li>
+                    <li>
+                        Zynga, produtora de jogos sociais dentro da plataforma, possui 167M MAU (~17% do total de MAU do Facebook).
+                    </li>
+                    <li>
+                        Possui diversos produtos como os <i>Apps</i>, <i>Pages</i>, <i>Ads</i>, porém o principal é o <i>News Feed</i>, o qual os usuários mais interagem.
+                    </li>
+                    <li>
+                        Estados Unidos, Brasil e Índia, nesta ordem, são os 3 maiores países em número de usuários da rede social.
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h3>News Feed</h3>
+                <br />
+                <img style="border: 1px solid; height: 90%;" class="centered" src="images/news_feed.png" />
+            </article>
 
-			<article>
-				<h1>Open Graph</h1>
-				<p>
-					<a href="http://ogp.me/">opg.me</a>
-				</p>
-			</article>
+            <article>
+                <h1>Open Graph</h1>
+                <p>
+                    <a target="_blank" href="http://ogp.me/">opg.me</a>
+                </p>
+            </article>
 
-			<article>
-				<h3>O que é Open Graph Protocol</h3>
-				<p>
-					<i>"The Open Graph protocol enables any web page to become a rich object in a social graph. For instance, this is used on Facebook to allow any web page to have the same functionality as any other object on Facebook."</i>
-				</p>
-				<p>
-					Propriedades de meta tags básicas:
-				</p>
-				<ul>
-					<li>
-						og:title - Título da página
-					</li>
-					<li>
-						og:description - A descrição da página
-					</li>
-					<li>
-						og:image - A imagem que caracteriza seu site
-					</li>
-					<li>
-						og:url - O link da página
-					</li>
-				</ul>
-			</article>
+            <article>
+                <h3>O que é Open Graph Protocol</h3>
+                <p>
+                    <i>"The Open Graph protocol enables any web page to become a rich object in a social graph. For instance, this is used on Facebook to allow any web page to have the same functionality as any other object on Facebook."</i>
+                </p>
+                <p>
+                    Propriedades de meta tags básicas:
+                </p>
+                <ul>
+                    <li>
+                        og:title - Título da página
+                    </li>
+                    <li>
+                        og:description - A descrição da página
+                    </li>
+                    <li>
+                        og:image - A imagem que caracteriza seu site
+                    </li>
+                    <li>
+                        og:url - O link da página
+                    </li>
+                </ul>
+            </article>
 
-			<article>
-				<h3>Testando as meta tags</h3>
-				<p><a href="https://developers.facebook.com/tools/debug/og/object?q=socialattend.com">developers.facebook.com/tools/debug</a></p>
-				<pre>
+            <article>
+                <h3>Testando as meta tags</h3>
+                <p>
+                    <a target="_blank" href="https://developers.facebook.com/tools/debug/og/object?q=socialattend.com">developers.facebook.com/tools/debug</a>
+                </p>
+                <pre>
 meta property="og:url" content="http://socialattend.com/"
 meta property="og:title" content="Social Attend"
 meta property="og:description" content="Procure eventos da sua área 
 de atuação e conecte-se com pessoas em comum 
 através das redes sociais!"
 				</pre>
-				<img style="border: 1px solid;" class="centered" src="images/opg_tags.png" />
-			</article>
+                <img style="border: 1px solid;" class="centered" src="images/opg_tags.png" />
+            </article>
 
-			<article>
-				<h3>Built-in types</h3>
-				<p>
-					É possivel tornar uma página qualquer em um objeto comum dentro do "grafo social" utilizando a propriedade og:type. Exemplo:
-				</p>
-				<pre>
+            <article>
+                <h3>Built-in types</h3>
+                <p>
+                    É possivel tornar uma página qualquer em um objeto comum dentro do "grafo social" utilizando a propriedade og:type. Exemplo:
+                </p>
+                <pre>
 meta property="og:type" content="video.movie"
 				</pre>
-				<img class="centered" style="border: 1px solid;height: 50%;" src="images/movie.png" />
-			</article>
+                <img class="centered" style="border: 1px solid;height: 50%;" src="images/movie.png" />
+            </article>
 
-			<article>
-				<h1>Pages</h1>
-				<p>
-					<a href="https://www.facebook.com/pages">facebook.com/pages</a>
-				</p>
-			</article>
+            <article>
+                <h1>Pages</h1>
+                <p>
+                    <a target="_blank" href="https://www.facebook.com/pages">facebook.com/pages</a>
+                </p>
+            </article>
 
-			<article>
-				<h3>Interagindo com os fans, analisando suas atitudes</h3>
-				<br /><img style="border: 1px solid; height:90%;" class="centered" src="images/pages.png" style="height:100%;" />
+            <article>
+                <h3>Interagindo com os fans, analisando suas atitudes</h3>
+                <br />
+                <img style="border: 1px solid; height:90%;" class="centered" src="images/pages.png" style="height:100%;" />
 
-			</article>
+            </article>
 
-			<article class="fill current" >
-				<img src="images/insights.png" style="height:100%;" />
-			</article>
+            <article class="fill current" >
+                <img src="images/insights.png" style="height:100%;" />
+            </article>
 
-			<article>
-				<h1>Apps</h1>
-				<p>
-					<a href="https://developers.facebook.com/apps">developers.facebook.com/apps</a>
-				</p>
-			</article>
-			
-			<article>
-				<h3>Para começar como desenvolvedor</h3>
-				<p>É necessário cadastrar um aplicativo dentro da página de <i>Apps</i> do Facebook para desenvolver algo. Até mesmo para fazer uma página com um botão de "Entrar com o Facebook".</p>
-				<p>Após a criação de um aplicativo, é possível:</p>
-				<ul>
-					<li>Obter credenciais OAuth.</li>
-					<li>Dar permissão para outros desenvolvedores e beta-testers.</li>
-					<li>Criar beta-testers falsos e "impersonar" essas contas.</li>
-					<li>Escolher quais permissões serão requeridas dos usuários.</li>
-					<li>Fazer filtros de usuários por IP e/ou localização.</li>
-					<li>Outras pequenas configurações.</li>
-				</ul>
-			</article>
+            <article>
+                <h1>Apps</h1>
+                <p>
+                    <a target="_blank" href="https://developers.facebook.com/apps">developers.facebook.com/apps</a>
+                </p>
+            </article>
 
-			<article>
-				<h1>Graph API</h1>
-				<p>
-					<a href="https://developers.facebook.com/docs/reference/api/">developers.facebook.com/docs/reference/api/</a>
-				</p>
-			</article>
-			
-			<article>
-				<h3>Utilizando o API Explorer</h3>
-				<p>Antes de começar as mexer em código, é possível utilizar o console para desenvolvedores do próprio Facebook:</p>
-				<p><a href="https://developers.facebook.com/tools/explorer">developers.facebook.com/tools/explorer</a></p>
-				<p>Todas as consultas de usuários são restritas por permissões dadas para sua aplicação, exceto informações públicas.</p>
-				<p>Utilizando o Graph API, podemos obter resultados de duas maneiras:</p>
-				<ul>
-					<li>Consultas por path</li>
-					<li>FQL (Facebook Query Language)</li>
-				</ul>
-			</article>
-			
-			<article>
-				<h3>Exemplo de permissões</h3>
-				<br /><img class="centered" style="border: 1px solid; height: 70%;" src="images/permissions.png"/>
-			</article>
+            <article>
+                <h3>O que é um <i>App</i> ?</h3>
+                <p>
+                    <i>Apps</i> são páginas HTML dentro de um iframe no Facebook, chamado de canvas.
+                </p>
+                <img class="centered" src="images/apps.png" style="border: 1px solid; height:80%;" />
+            </article>
 
-			<article id="get-info">
-				<h3>Consultas por path</h3>
-				<p>Obtendo dados públicos de um usuário:</p>
-				<pre>
-					GET https://graph.facebook.com/gabrielsapo
+            <article>
+                <h3>Para começar como desenvolvedor</h3>
+                <p>
+                    É necessário cadastrar um aplicativo dentro da página de <i>Apps</i> do Facebook para desenvolver algo. Até mesmo para fazer uma página com um botão de "Entrar com o Facebook".
+                </p>
+                <p>
+                    Após a criação de um <i>App</i>, é possível:
+                </p>
+                <ul>
+                    <li>
+                        Obter credenciais OAuth.
+                    </li>
+                    <li>
+                        Dar permissão para outros desenvolvedores e beta-testers.
+                    </li>
+                    <li>
+                        Criar beta-testers falsos e "impersonar" essas contas.
+                    </li>
+                    <li>
+                        Escolher quais permissões serão requeridas dos usuários.
+                    </li>
+                    <li>
+                        Fazer filtros de usuários por IP e/ou localização.
+                    </li>
+                    <li>
+                        Outras pequenas configurações.
+                    </li>
+                </ul>
+            </article>
+
+            <article>
+                <h1>Graph API</h1>
+                <p>
+                    <a target="_blank" href="https://developers.facebook.com/docs/reference/api/">developers.facebook.com/docs/reference/api/</a>
+                </p>
+            </article>
+
+            <article>
+                <h3>Utilizando o API Explorer</h3>
+                <p>
+                    Antes de começar as mexer em código, é possível utilizar o console para desenvolvedores do próprio Facebook:
+                </p>
+                <p>
+                    <a target="_blank" href="https://developers.facebook.com/tools/explorer">developers.facebook.com/tools/explorer</a>
+                </p>
+                <p>
+                    Todas as consultas de usuários são restritas por permissões dadas para sua aplicação, exceto informações públicas.
+                </p>
+                <p>
+                    Utilizando o Graph API, podemos obter resultados de duas maneiras:
+                </p>
+                <ul>
+                    <li>
+                        Consultas por path (se autenticadas trazem mais informações de um objeto)
+                    </li>
+                    <li>
+                        FQL (Facebook Query Language)
+                    </li>
+                </ul>
+            </article>
+
+            <article>
+                <h3>Exemplo de permissões</h3>
+                <br />
+                <img class="centered" style="border: 1px solid; height: 70%;" src="images/permissions.png"/>
+            </article>
+
+            <article id="get-gabrielsapo">
+                <h3>Consultas por path</h3>
+                <p>
+                    Obtendo dados públicos de um usuário:
+                </p>
+                <pre>
+GET https://graph.facebook.com/gabrielsapo
 				</pre>
-				<ul></ul>
-				<button id="gabrielsapo-info" onClick="get_gabrielsapo_info();">Rodar</button>
-			</article>
+                <ul></ul>
+                <button onClick="get_info('#get-gabrielsapo', 'gabrielsapo');">
+                    Rodar
+                </button>
+            </article>
 
-			<article id="get-object">
-				<h3>Consultas pelos objetos</h3>
-				<p>Obtendo dados públicos de uma página:</p>
-				<pre>
-					GET https://graph.facebook.com/http://socialattend.com/
-				</pre>
-				<ul></ul>
-				<button id="object-info" onClick="get_object_info();">Rodar</button>
-			</article>
+            <article id="get-siteapps" class="smaller">
+                <h3>Consultas por path</h3>
+                <p>
+                    Obtendo dados públicos de uma <i>Facebook Page</i>:
+                </p>
+                <pre>
+GET https://graph.facebook.com/siteapps
+                </pre>
+                <ul></ul>
+                <button onClick="get_info('#get-siteapps', 'siteapps');">
+                    Rodar
+                </button>
+            </article>
 
-			<article>
-				<h3>FQLs</h3>
-				<p>É necessário obter uma chave de acesso (OAuth2.0) para fazer requisições através de FQLs. Portanto, não é possível obter informações públicas sem autenticação por este método.</p>
-				<pre>
-					GET https://graph.facebook.com/?fql=SELECT%20uid%2C%20name
-					%20FROM%20user%20WHERE%20uid%20%3D%me()
+            <article id="get-socialattend">
+                <h3>Consultas pelos objetos</h3>
+                <p>
+                    Obtendo dados públicos de uma página:
+                </p>
+                <pre>
+GET https://graph.facebook.com/http://socialattend.com/
 				</pre>
-				<p>Que pode ser traduzido no API Explorer para:</p>
-				<pre>
-					SELECT uid, name FROM user WHERE uid = me()
-				</pre>
-			</article>
-			
-			<article>
-				<h1>restfb (cliente Java)</h1>
-				<p>
-					<a href="http://restfb.com/">restfb.com</a>
-				</p>
-			</article>
+                <ul></ul>
+                <button onClick="get_info('#get-socialattend', 'http://socialattend.com/');">
+                    Rodar
+                </button>
+            </article>
 
-			<article>
-				<h2>Obrigado</h2>
-				<ul>
-					<li><a href="http://www.socialbakers.com/facebook-statistics/">Social Bakers Facebook Statistics</a></li>
-					<li><a href="https://developers.facebook.com/docs/">Documentação oficial do Facebook</a></li>
-					<li><a href="https://developers.facebook.com/docs/reference/fql/">FQL reference</a></li>
-					<li><a href="https://developers.facebook.com/tools/">More Facebook API tools</a></li>
-				</ul>
-			</article>
-		</section>
-	</body>
+            <article>
+                <h3>FQLs</h3>
+                <p>
+                    É necessário obter uma chave de acesso (OAuth2.0) para fazer requisições através de FQLs. Portanto, não é possível obter informações públicas sem autenticação por este método.
+                </p>
+                <p>
+                    Esse tipo de consulta oferece um "poder maior" ao desenvolvedor:
+                </p>
+                <ul>
+                    <li>
+                        Queries mais complexas com subqueries.
+                    </li>
+                    <li>
+                        Funções prontas como me(), now(), strlen(), substr() e strpos().
+                    </li>
+                    <li>
+                        Customização da saída.
+                    </li>
+                </ul>
+                <p>
+                    Porém, é necessário conhecimento prévio de SQL para poder utilizá-lo.
+                </p>
+            </article>
+
+            <article>
+                <h3>Consultas por FQLs</h3>
+                <pre>
+GET https://graph.facebook.com/?fql=XXXX&access_token=YYYYY
+                </pre>
+                <p>
+                    Buscar as friendlists no API Explorer (necessita permissão "read_friendlists"):
+                </p>
+                <pre>
+select uid, flid from friendlist_member
+where flid in
+(select flid from friendlist where owner=me())
+limit 10000
+                </pre>
+                <a target="_blank" href="https://developers.facebook.com/tools/explorer?fql=SELECT%20uid%2C%20flid%20FROM%20friendlist_member%0AWHERE%20flid%20IN%0A(SELECT%20flid%20FROM%20friendlist%20WHERE%20owner%3Dme())%0Alimit%2010000"><button>Buscar</button></a>
+            </article>
+            
+            <article>
+                <h3>Consultas por FQLs</h3>
+                <p>Buscar meus interesses diversos (necessita permissão "user_likes"):</p>
+                <pre>
+select movies, music, books, tv, games, sports, 
+favorite_teams, inspirational_people, interests, political 
+from user where uid = me()
+                </pre>
+                <a target="_blank" href="https://developers.facebook.com/tools/explorer?fql=select%20movies%2C%20music%2C%20books%2C%20tv%2C%20games%2C%20sports%2C%20%0Afavorite_teams%2C%20inspirational_people%2C%20interests%2C%20political%20%0Afrom%20user%20where%20uid%20%3D%20me()"><button>Buscar</button></a>
+            </article>
+            
+
+            <article>
+                <h1>restfb (cliente Java)</h1>
+                <p>
+                    <a target="_blank" href="http://restfb.com/">restfb.com</a>
+                </p>
+            </article>
+            
+            <article>
+                <h3>Utilizando o restfb</h3>
+                <pre>
+FacebookClient facebookClient = 
+    new DefaultFacebookClient(MY_ACCESS_TOKEN);
+// OU
+FacebookClient publicOnlyFacebookClient = new DefaultFacebookClient();
+
+// Exemplos
+User user = facebookClient.fetchObject("me", User.class);
+Page page = facebookClient.fetchObject("cocacola", Page.class);
+
+out.println("User name: " + user.getName());
+out.println("Page likes: " + page.getLikes());
+                </pre>
+            </article>
+
+            <article>
+                <h2>Obrigado</h2>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://www.socialbakers.com/facebook-statistics/">Social Bakers Facebook Statistics</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://developers.facebook.com/docs/">Documentação oficial do Facebook</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://developers.facebook.com/docs/reference/fql/">FQL reference</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://developers.facebook.com/tools/">More Facebook API tools</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://restfb.com/#initialization">restfb Initialization</a>
+                    </li>
+                </ul>
+            </article>
+        </section>
+    </body>
 </html>
